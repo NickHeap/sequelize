@@ -97,6 +97,33 @@ describe(support.getTestDialectTeaser('SQL'), () => {
         expect(customers).length.to.be(0);
       });
     });
+    it.only('should not get list of tables', async () => {
+      var sequelize = await createAndLogin();
+
+      return sequelize.query('SELECT * FROM PUB."_file" WHERE PUB."_file"."_file-num" > 0 AND PUB."_file"."_file-num" < 32000', { type: sequelize.QueryTypes.SELECT})
+      .then(tables => {
+        expect(tables).to.not.be.null;
+        expect(tables).length.to.be(0);
+      });
+    });
+    it('should not get customer 89273823 with a direct query and where', async () => {
+      var sequelize = await createAndLogin();
+
+      const Bin = await sequelize.define('Bin', {
+        WarehouseNum: { type: Sequelize.INTEGER, allowNull: true, defaultValue: 0 },
+        Itemnum: { type: Sequelize.INTEGER, allowNull: true, defaultValue: 0 },
+        Qty: { type: Sequelize.INTEGER, allowNull: true, defaultValue: 0 },
+        BinNum: { type: Sequelize.INTEGER, allowNull: true, defaultValue: 0, primaryKey: true },
+        BinName: { type: Sequelize.STRING, allowNull: true, defaultValue: 0 }
+      }, {
+        timestamps: false,
+        freezeTableName: true,
+        version: false
+      });
+  
+      return sequelize.sync();
+    });
+
 
     async function createAndLogin() {
       var sequelize = new Sequelize('openedge', 'SYSPROGRESS', 'SYSPROGRESS', {
