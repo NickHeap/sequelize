@@ -32,7 +32,7 @@ Sequelize will setup a connection pool on initialization so you should ideally o
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize('database', 'username', 'password', {
   host: 'localhost',
-  dialect: 'mysql'|'sqlite'|'postgres'|'mssql',
+  dialect: 'mysql'|'sqlite'|'postgres'|'mssql'|'openedge',
   operatorsAliases: false,
 
   pool: {

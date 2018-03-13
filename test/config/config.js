@@ -64,5 +64,22 @@ module.exports = {
       max: process.env.SEQ_PG_POOL_MAX  || process.env.SEQ_POOL_MAX  || 5,
       idle: process.env.SEQ_PG_POOL_IDLE || process.env.SEQ_POOL_IDLE || 3000
     }
+  },
+
+  openedge: {
+    database: process.env.SEQ_OE_DB   || process.env.SEQ_DB    || 'openedge',
+    username: process.env.SEQ_OE_USER || process.env.SEQ_USER  || 'SYSPROGRESS',
+    password: process.env.SEQ_OE_PW   || process.env.SEQ_PW    || 'SYSPROGRESS',
+    host: process.env.OPENEDGE_PORT_20666_TCP_ADDR || process.env.SEQ_OE_HOST || process.env.SEQ_HOST  || '127.0.0.1',
+    port: process.env.OPENEDGE_PORT_20666_TCP_PORT || process.env.SEQ_OE_PORT || process.env.SEQ_PORT  || 20666,
+    dialectOptions: {
+      // use ODBC driver
+      driver: 'Progress Openedge 11.7 Driver'
+    },
+    pool: {
+      max: process.env.SEQ_OE_POOL_MAX  || process.env.SEQ_POOL_MAX  || 5,
+      idle: process.env.SEQ_OE_POOL_IDLE || process.env.SEQ_POOL_IDLE || 3000
+    }
   }
+
 };

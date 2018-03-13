@@ -1,5 +1,5 @@
 {
-  "title": " Sequelize | The node.js ORM for PostgreSQL, MySQL, SQLite and MSSQL",
+  "title": " Sequelize | The node.js ORM for PostgreSQL, MySQL, SQLite, MSSQL and OpenEdge",
   "source": "./lib",
   "destination": "./esdoc",
   "access": ["public"],
